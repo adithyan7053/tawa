@@ -1,0 +1,108 @@
+/* body {
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+} */
+
+/* Header Styles */
+/* header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    transition: top 0.3s ease-in-out;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+} */
+
+/* Footer Styles */
+/* footer {
+    background-color: black;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
+/* Home Page Styles */
+/* .container {
+    padding: 0 80px;
+}
+
+.row {
+    margin: 0;
+}
+
+.col-sm-4 {
+    padding: 0;
+}
+
+.my-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    margin: 40px 40px;
+} */
+
+/* Category Page Styles */
+/* .category-links {
+    display: flex;
+} */
+
+/* .category-links a {
+    margin-right: 10px;
+} */
+
+/* Cart Page Styles */
+/* .my_cart_table {
+    min-width: 400px;
+    font-size: 14px;
+} */
+
+/* .my_cart_table_title {
+    font-weight: normal;
+    background-color: cyan;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+} */
+
+/* .custom_a {
+    text-decoration: none;
+    margin-top: 5px;
+} */
+
+/* Search Page Styles */
+/* .my_search_text {
+    padding-top: 20px;
+} */
+
+
+/* Media Queries */
+/* @media (max-width: 767px) { */
+    /* Styles for smaller screens */
+    /* .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+} */

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Items
+{% endblock %}
+{% block title %}
+Cart
+{% endblock %}
+{% block content %}
+{% if not cart_items %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 style="color: red;">Your Cart is empty</h1><br>
+        <p class = "text-center"><a href="{%url 'shop:allProdcat' %}">Continue shopping</a></p>
+    </div>
+</div>
+{% else %}
+<div>
+    <div class="text-center">
+        <h1 class="text-center my_title">
+            Your cart
+        </h1>
+        <br>
+    </div>
+    <div class="row mx-auto">  
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <table class="table my_cart_table">
+                <thead class="my_cart_table_title">
+                    <tr>
+                        <th colspan="5">
+                            your items
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cart_item in cart_items %}
+                    <tr>
+                        <td>
+                            <a href="cart_item.product.get_absolute_url"><img src="{{cart_item.product.image.url}}" alt="product image"></a>
+                        </td>
+                        <td class="text-lef">
+                            {{cart_item.product.name}}
+                            <br>
+                            name : {{cart_item_product.id}}
+                            <br>
+                            Price : {{cart_item.product.price}}
+                            <br>
+                            Qty : {{cart_item.quantity}} x {{cart_item}}
+                        </td>
+                        <td>
+                            Rs - {{cart_item.sub_total}}
+                        </td>
+                        {% if cart_item.quantity < cart_item.product.stock %}
+                        <td>
+                            <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a"><i class="fa-solid fa-plus"></i></a> 
+                            &nbsp;<a href="" class="cutom_a"><i class="fa-solid fa-minus"></i></a>
+                            &nbsp;<a href="" class="cutom_icon"><i class="fa-solid fa-trash"></i>></i></a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <td>
+                                &nbsp;<a href="" class="cutom_a"><i class="fa-solid fa-minus"></i></a>
+                                &nbsp;<a href="" class="cutom_icon"><i class="fa-solid fa-trash"></i>></i></a>
+                            </td>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <table class="my_cart_table">
+            <thead class="my_custom_thread">
+                <tr>
+                    <th>
+                        Checkout
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Please review your shopping cart items before prroceeding payments.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mx-auto">
+            <a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary btn-block my_cart_table_button">Continue shopping</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+<style>
+.my_cart_table{
+    min-width:400px;
+    font-size: 14px;
+}
+
+.my_cart_table_title{
+    font-weight: normal;
+    background-color: cyan;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+.custom_a
+{
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+</style>

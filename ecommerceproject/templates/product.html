@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+        {{ product.description|truncatewords:155 }}
+    
+
+{% endblock %}
+
+<!-- title -->
+
+{% block title %}
+{% if category %}
+    {{ product.name }} -  abc
+
+{% endif %}
+{% endblock %}
+
+<!-- contents -->
+
+{% block content %}
+<!-- {% debug %} -->
+<div>
+    <div>
+        <p><a href="{% url 'shop:allProdCat' %}" class="custom-link">Home</a>|<a href="{{product.category.get_url}}" class="custom-link">{{product.category}}</a>|{{product.name}}</p>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 450px; max-height: 650px;">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1>{{product.name}}</h1>
+            
+            <p>{{product.description}}</p>
+            <br>
+            <li><i>100% Original Products</li>
+            <li>Pay on delivery might be available</li>
+            <li>Easy 14 days returns and exchanges</li>
+            <li>Try & Buy might be available</i></li> 
+            <br>
+            <br>
+            <br>
+            <p class="price"><strong>Rs - </strong><span style="color:orange;">{{product.price}}/-</span></p>
+
+            <br>
+
+            {% if product.stock <= 0 %}
+            <p><b>Out Of Stock</b></p>
+            {% else %}
+            <a href="{% url 'cart:add_cart' product.id %}" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+
+.container {
+    padding: 30px 0;
+}
+
+    a.custom-link {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        background-color: rgb(172, 172, 172);
+    }
+    
+</style>
+</style>
+
+{% endblock %}

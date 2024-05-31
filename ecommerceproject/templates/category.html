@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    {% if category %}
+        {{ category.description|truncatewords:155 }}
+    {% else %}
+        Welcome to ____
+    
+    {% endif %}
+{% endblock %}
+
+<!-- title -->
+
+{% block title %}
+{% if category %}
+    {{ category.name }} -  abc
+{% else %}
+    Welcome to title
+
+{% endif %}
+{% endblock %}
+
+<!-- contents -->
+
+{% block content %}
+{% if category %}
+
+    <div>
+        <div>
+            <p><a href="{% url 'shop:allProdCat' %}">Our Product Collections"</a></p>
+
+        </div>
+    </div>
+    {% endif %}
+        <div>
+            {% if category %}
+                <img src="{{category.image.url}}" alt="{{category.name}}"  style="max-width: 200px; max-height: 200px;">
+        </div>
+            <br>
+        <div>
+            <h1>{{category.name}}</h1>
+            <p>{{category.description}}</p>
+        </div>
+            {% else %}
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/banner2.png' %}" class="d-block w-100" alt="Banner 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'img/banner3.png' %}" class="d-block w-100" alt="Banner 2">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+             
+        {% endif %}
+
+<div class="container">
+  <div class="row">
+    {% for category in categories %}
+    <div class="col-sm-4">
+      <div class="card my-card">
+        <img src="{{ category.image.url }}" class="card-img-top my-card-img" alt="{{ category.name }}">
+        <div class="card-body my-card-body">
+          <h5 class="card-title my-card-title">{{ category.name }}</h5>
+          <a href="{{product.get_url}}" class="btn btn-outline-light my-card-btn">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<br>
+<br>
+<div>
+<img src="{% static 'img/bannersmall2.png' %}"  alt="Banner 1" style="height: 100%; width: 1320px; margin-left: 120px;">
+
+</div>
+<div class="procontainer">
+    <div class="row pro-row">
+        {% for product in products.object_list %}
+        <div class="col-sm-3">
+            <div class="card pro-card">
+                <a href="{{product.get_url}}"><img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top1"></a>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name|truncatewords:5}}</h5>
+                    <p class="card-text">{{product.description|truncatewords:10}}</p>
+                    <p class="card-text">Rs-{{product.price}}/-</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mx-auto">
+        {% if products.paginator.num_pages > 1 %}
+            <hr>
+            <div class="text-center">
+                {% for pg in products.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %}active{% endif %}">{{pg}}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    
+    <br>
+</div>
+
+
+
+
+<style>
+
+.container {
+    padding: 0 80px;
+}
+
+.row {
+    margin: 0;
+}
+
+.col-sm-4 {
+    padding: 0;
+}
+
+.my-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 400px;
+    margin: 40px 40px;
+}
+
+
+
+.my-card-img {
+    width: 100%;
+    height: auto;
+}
+
+.my-card-body {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.my-card-title {
+    text-align:center;
+    width: 100%;
+    color: white;
+}
+
+.pro-card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 450px;
+    margin: 40px 40px;
+}
+.pro-row{
+    margin: 0;
+}
+.procontainer {
+    padding: 0 80px;
+}
+
+.pro-row {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-sm-3 {
+    padding: 0;
+    margin-bottom: 20px; 
+    flex: 0 0 calc(25% - 20px); 
+}
+
+.pro-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 425px;
+}
+
+.card-img-top1 {
+    max-width: 170px;
+    height: 170px;
+}
+
+
+</style>
+
+{% endblock %}

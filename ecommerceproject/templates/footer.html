@@ -1,0 +1,124 @@
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Explore Tawa</h4>
+            <ul>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Casuals</a></li>
+                <li><a href="#">Formals</a></li>
+                <li><a href="#">Slippers</a></li>
+                <li><a href="#">Flip-flops</a></li>
+                <li><a href="#">Safety Shoes</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Shop Clothing</h4>
+            <ul>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">Innerwear</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Shop Accessories</h4>
+            <ul>
+                <li><a href="#">Bags</a></li>
+                <li><a href="#">Belts</a></li>
+                <li><a href="#">Wallets</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <ul>
+                <li>Phone: +1234567890</li>
+                <li>Email: info@tawa.com</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Always keep exploring more! -->
+    <div class="footer-section">
+        <form action="#" method="post">
+            <label for="email">Always keep exploring more!</label><br/>
+            <input type="email" id="email" name="email" placeholder="Enter your email"><br/>
+            <input type="submit" value="Subscribe">
+        </form>
+
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+        Follow us on social media:<br/>
+        Twitter | Facebook | Instagram
+    </div>
+
+    <!-- Copy right -->
+    <div class="copy-right">
+        © 2023 TAWA . All rights reserved.
+    </div>
+
+</footer>
+
+<style>
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex-basis: calc(33.33% - 30px);
+    margin-bottom: 30px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.copy-right {
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        flex-basis: auto;
+        text-align:center;
+        margin-bottom: 30px;
+    }
+}

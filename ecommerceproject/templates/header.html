@@ -1,0 +1,101 @@
+{% load static %}
+
+<header style="background-color: black; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; padding-left: 80px;">
+        <a href="{% url 'shop:allProdCat' %}">
+            <img src="{% static 'img/logo2.1.png' %}" alt="logoimage" style="max-width: 100px; max-height: 100px;">
+        </a>
+        <nav>
+            <ul style="list-style: none; display: flex; align-items: center;">
+                <li style="margin-right: 20px;"><a href="{% url 'shop:allProdCat' %}" style="color: white; text-decoration: none;">Home</a></li>
+                <li class="dropdown" style="margin-right: 20px;">
+                    <a href="{% url 'shop:allProdCat' %}" style="color: white; text-decoration: none;">Collections</a>
+                    <ul class="dropdown-menu" style="background-color: black; display: none;">
+                        <li><a href="{% url 'shop:allProdCat' %}" style="color:white;">All Products</a></li>
+                        {% for cat in links %}
+                        <li><a href="{% url 'shop:products_by_category' cat.slug %}" style="color:white;">{{ cat.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li style="margin-right: 20px;"><a href="#" style="color: white; text-decoration: none;">About Us</a></li>
+                <li style="margin-right: 20px;"><a href="#" style="color: white; text-decoration: none;">Sales</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div style="padding-right: 80px; margin-bottom: 12px;">
+        <form method="get" class="d-flex" action="{% url 'search_app:SearchResult' %}">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" style="height: 35px;">
+            <button type="submit" class="button1">Search</button>
+        </form>
+    </div>
+</header>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var searchTerm = document.querySelector('input[type=search]').value;
+    });
+
+    document.querySelector('.dropdown > a').addEventListener('click', function(event) {
+        event.preventDefault();
+        var dropdownMenu = document.querySelector('.dropdown-menu');
+        if (dropdownMenu.style.display === 'none') {
+            dropdownMenu.style.display = 'block';
+        } else {
+            dropdownMenu.style.display = 'none';
+        }
+    });
+
+    var header = document.querySelector('header');
+
+    var prevScrollpos = window.pageYOffset;
+
+    window.addEventListener('scroll', function() {
+        var currentScrollPos = window.pageYOffset;
+
+        if (prevScrollpos > currentScrollPos) {
+            header.style.top = "0";
+        } else {
+            header.style.top = "-65px";
+        }
+
+        // Update the previous scroll position
+        prevScrollpos = currentScrollPos;
+    });
+</script>
+<style>
+.dropdown-menu a {
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    background-color: white;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    transition: top 0.3s ease-in-out;
+    /* margin-bottom: 50px; */
+}
+.button1 {
+    background-color: black;
+    color: #f6f6f6;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: #f6f6f6;
+    height: 35px;
+  transition-duration: 0.4s;
+  text-align: center;
+}
+
+.button1:hover {
+  background-color: #f6f6f6; /* Green */
+  color: rgb(0, 0, 0);
+}
+
+</style>

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:allProdCat' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <div class="category-links">
+              {% for cat in links %}
+              <a class="nav-link" href="{% url 'shop:products_by_category' cat.slug %}">{{cat.name}}</a>
+              {% endfor %}
+          </div>
+      </li>
+      
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<style>
+  .category-links {
+    display: flex;
+}
+
+.category-links a {
+    margin-right: 10px;
+}
+
+</style>
